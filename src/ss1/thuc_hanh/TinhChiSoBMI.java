@@ -6,9 +6,9 @@ public class TinhChiSoBMI {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double weight, height, bmi;
-        System.out.print("Your weight (in kilogram):");
+        System.out.println("Your weight (in kilogram):");
         weight = scanner.nextDouble();
-        System.out.print("Your height (in meter):");
+        System.out.println("Your height (in meter):");
         height = scanner.nextDouble();
         bmi = weight / Math.pow(height, 2);
         System.out.printf("%-30s%s", "bmi", "Interpretation\n");
