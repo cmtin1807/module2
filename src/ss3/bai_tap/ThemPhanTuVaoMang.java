@@ -16,7 +16,7 @@ public class ThemPhanTuVaoMang {
         for (int i = 0, j = 0; j < newArray.length; i++, j++) {
             if (j == index) {
                 newArray[j] = x;
-                j++;
+                i--;
             } else {
                 newArray[j] = array[i];
             }
