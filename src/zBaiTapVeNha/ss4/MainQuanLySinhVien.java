@@ -118,7 +118,7 @@ class SinhVien {
     }
 
     public String toString() {
-        return "Mã SV:  " + maSV + ", Tên SV: " + tenSV + ", Email: " + email + ", SDT: " + sdt + ", Điểm: " + GPA;
+        return "Mã SV:  " + this.maSV + ", Tên SV: " + this.tenSV + ", Email: " + this.email + ", SDT: " + this.sdt + ", Điểm: " + this.GPA;
     }
 }
 
