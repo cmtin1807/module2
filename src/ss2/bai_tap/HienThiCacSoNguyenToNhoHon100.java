@@ -6,14 +6,14 @@ public class HienThiCacSoNguyenToNhoHon100 {
         System.out.println("1: 2");
         int x = 3;
         while (x < 100) {
-            boolean kq = true;
+            boolean ketQua = true;
             for (int i = 2; i <= Math.sqrt(x); i++) {
                 if (x % i == 0) {
-                    kq = false;
+                    ketQua = false;
                     break;
                 }
             }
-            if (kq) {
+            if (ketQua) {
                 index++;
                 System.out.println(index +": "+x);
 

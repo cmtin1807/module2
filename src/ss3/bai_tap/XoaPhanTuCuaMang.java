@@ -22,9 +22,10 @@ public class XoaPhanTuCuaMang {
             }
             newArray[j++] = array[i];
         }
+        array = newArray;
         System.out.printf("%-30s","Mang moi la: ");
-        for (int i = 0; i < newArray.length; i++) {
-            System.out.print(newArray[i] + " ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
     }
 }

@@ -6,14 +6,14 @@ public class HienThi20SoNguyenDau {
         System.out.println("2");
         int x = 3;
         while (index < 20 ){
-            boolean kq = true;
+            boolean ketQua = true;
             for (int i = 2; i <= Math.sqrt(x) ; i++) {
                 if (x % i == 0) {
-                    kq = false;
+                    ketQua = false;
                     break;
                 }
             }
-            if (kq) {
+            if (ketQua) {
                 System.out.println(x);
                 index++;}
             x++;
