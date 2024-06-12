@@ -1,6 +1,4 @@
-package ss5.bai_tap.AccessModifier;
-
-import org.w3c.dom.ls.LSOutput;
+package ss5.bai_tap.access_modifier;
 
 public class Circle {
     private double radius = 1;

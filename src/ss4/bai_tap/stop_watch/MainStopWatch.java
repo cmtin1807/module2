@@ -1,4 +1,4 @@
-package ss4.bai_tap.StopWatch;
+package ss4.bai_tap.stop_watch;
 
 public class MainStopWatch {
     public static void main(String[] args) {
