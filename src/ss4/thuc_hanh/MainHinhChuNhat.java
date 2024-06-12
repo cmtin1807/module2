@@ -11,11 +11,10 @@ public class MainHinhChuNhat {
         double doc = sc.nextDouble();
         HinhChuNhat hinhChuNhat = new HinhChuNhat(ngang, doc);
         System.out.println("Hình chữ nhật của bạn: \n" + hinhChuNhat.getHienThi());
-        System.out.println("Diện tích hình chữ nhật của bạn là: "+ hinhChuNhat.getDienTich());
-        System.out.println("Chu vi hình chữ nhật của bạn là: "+ hinhChuNhat.getChuVi());
+        System.out.println("Diện tích hình chữ nhật của bạn là: " + hinhChuNhat.getDienTich());
+        System.out.println("Chu vi hình chữ nhật của bạn là: " + hinhChuNhat.getChuVi());
     }
 }
-
 class HinhChuNhat {
     double ngang;
     double doc;
