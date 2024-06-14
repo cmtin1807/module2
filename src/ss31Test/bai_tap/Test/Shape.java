@@ -1,12 +1,9 @@
-package ss7.bai_tap.trien_khai_interface_colorable;
+package ss31Test.bai_tap.Test;
 
-public abstract class Shape {
-    private String color = "green";
-    private boolean filled = true;
-
-    public Shape() {
-    }
-
+public abstract class Shape implements Resizeable {
+    String color = "green";
+    boolean filled = true;
+    public Shape (){}
     public Shape(String color, boolean filled) {
         this.color = color;
         this.filled = filled;
@@ -27,14 +24,14 @@ public abstract class Shape {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
-    public abstract double getArea();
-    public abstract double getPerimeter();
 
     @Override
     public String toString() {
-        return "A Shape with color of "
-                + getColor()
-                + " and "
-                + (isFilled() ? "filled" : "not filled");
+        return "Shape{" +
+                "color='" + color + '\'' +
+                ", filled=" + filled +
+                '}';
     }
+    public abstract double getArea();
+    public abstract double getPerimeter();
 }

@@ -1,7 +1,5 @@
 package ss7.bai_tap.trien_khai_interface_colorable;
 
-import ss6.bai_tap.phat_trien_triangle.Triangle;
-
 public class Main {
     public static void main(String[] args) {
         Shape[] shape = new Shape[4];
@@ -10,19 +8,28 @@ public class Main {
         shape[2] = new Circle(2);
         shape[3] = new Square(10);
         for (Shape color : shape) {
-            if (color instanceof Rectangle) {
-                Rectangle rectangle = (Rectangle) color;
-                System.out.println("Diện tích hình chữ nhật= " + rectangle.getArea());
+            System.out.println(color.getArea());
+            if (color instanceof Colorable) {
+                Colorable colorable = (Colorable) color;
+                System.out.println(colorable.howToColor());
             }
-            if (color instanceof Square) {
-                Square square = (Square) color;
-                System.out.println("Diện tích hình vuông= " + square.getArea());
-                System.out.println(square.howToColor());
-            }
-            if (color instanceof Circle) {
-                Circle circle = (Circle) color;
-                System.out.println("Diện tích hình tròn= " + Circle.getArea());
-            }
+
+
+
+//            Cách2:
+//            if (color instanceof Rectangle) {
+//                Rectangle rectangle = (Rectangle) color;
+//                System.out.println("Diện tích hình chữ nhật= " + rectangle.getArea());
+//            }
+//            if (color instanceof Square) {
+//                Square square = (Square) color;
+//                System.out.print("Diện tích hình vuông= " + square.getArea());
+//                System.out.println("\t"+square.howToColor());
+//            }
+//            if (color instanceof Circle) {
+//                Circle circle = (Circle) color;
+//                System.out.println("Diện tích hình tròn= " + Circle.getArea());
+//            }
         }
     }
 }

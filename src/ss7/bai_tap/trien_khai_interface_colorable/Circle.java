@@ -23,7 +23,7 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
-    public static double getArea() {
+    public double getArea() {
         return radius * radius * Math.PI;
     }
 
