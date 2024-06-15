@@ -8,7 +8,7 @@ import ss7.bai_tap_ve_nha.staff.Staff;
 import java.util.Scanner;
 
 public class StaffManager implements IManager {
-    protected Staff[] staffManager;  // Corrected variable name
+    protected Staff[] staffManager;
     protected int limit;
     protected int size;
 

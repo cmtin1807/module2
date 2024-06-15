@@ -168,7 +168,6 @@ public class Main {
                                             break;
                                         default:
                                             System.out.println("Invalid choice. Please make a different selection.");
-
                                     }
                                 }
                                 break;
