@@ -20,5 +20,11 @@ public class Main {
         for (Circle circle : circles) {
             System.out.println(circle);
         }
+        Comparator<Circle> colorComparator2 = new ColorComparator();
+        Arrays.sort(circles, colorComparator2);
+        System.out.println("After-sorted:");
+        for (Circle circle : circles) {
+            System.out.println(circle);
+        }
     }
 }
