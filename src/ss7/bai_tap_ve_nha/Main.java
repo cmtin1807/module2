@@ -11,7 +11,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        StaffManager manager = new StaffManager(10);
+        System.out.println("Insert limit of list: ");
+        int limit = sc.nextInt();
+        StaffManager manager = new StaffManager(limit);
         Staff staff1 = new OfficeStaff(1, "Nguyen", "0982775131", "Giam doc");
         Staff staff2 = new FactoryStaff(2, "Quyet", "0909000999", "Giam doc", "C04", "Fulltime");
         manager.add(staff1);
