@@ -56,6 +56,7 @@ public class Main {
                             case 2:
                                 System.out.print("ID Staff: ");
                                 int idFactory = sc.nextInt();
+                                sc.nextLine();
                                 System.out.print("Name Staff: ");
                                 String nameFactory = sc.next();
                                 System.out.print("Phone Staff: ");
