@@ -1,10 +1,10 @@
-package ss7.bai_tap_ve_nha;
+package ss16.thuc_hanh.bai_tap_ve_nha;
 
-import ss7.bai_tap_ve_nha.staff.FactoryStaff;
-import ss7.bai_tap_ve_nha.staff.OfficeStaff;
-import ss7.bai_tap_ve_nha.staff.Shipper;
-import ss7.bai_tap_ve_nha.staff.Staff;
-import ss7.bai_tap_ve_nha.staff_mananger.StaffManager;
+import ss16.thuc_hanh.bai_tap_ve_nha.staff.FactoryStaff;
+import ss16.thuc_hanh.bai_tap_ve_nha.staff.OfficeStaff;
+import ss16.thuc_hanh.bai_tap_ve_nha.staff.Shipper;
+import ss16.thuc_hanh.bai_tap_ve_nha.staff.Staff;
+import ss16.thuc_hanh.bai_tap_ve_nha.staff_mananger.StaffManager;
 
 import java.util.Scanner;
 
