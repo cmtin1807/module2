@@ -2,16 +2,13 @@ package ss12.bai_tap.use_arraylist_and_linkedlist.array_list.linkedlist.service;
 
 import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.linkedlist.molde.Product;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class ProductManager {
     List<Product> productList;
 
     public ProductManager() {
-        productList = new ArrayList<Product>();
+        productList = new LinkedList<Product>();
     }
 
     public void addProduct(Product product) {

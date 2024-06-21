@@ -19,12 +19,12 @@ public class ProductManager {
         if (!productList.isEmpty()) {
             for (int i = 0; i < productList.size(); i++) {
                 if (productList.get(i).getId() == id) {
-                    productList.remove(productList.get(i));
-                    System.out.println("Removed product: " + productList.get(i));
+                    Product removedProduct = productList.remove(i);
+                    System.out.println("Removed product: " + removedProduct);
+                    i--;
                 }
             }
         }
-
     }
     public boolean checkId(int id) {
         for (int i = 0; i < productList.size(); i++) {
