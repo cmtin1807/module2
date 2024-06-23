@@ -1,10 +1,12 @@
 package ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.controller;
 
-import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.molde.Product;
+import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.model.Product;
 import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.service.ProductManager;
 import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.view.ViewProduct;
 
 import java.util.Scanner;
+
+import static ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.view.ToChoice.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,23 +24,23 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 1:
+                case ADDPRODUCT:
                     ViewProduct.addNewProduct(scanner, productManager);
                     break;
-                case 2:
+                case UPDATEPRODUCT:
                     ViewProduct.updateProductCurrentById(scanner, productManager);
                     break;
-                case 3:
+                case DELETEPRODUCT:
                     ViewProduct.deleteProductById(scanner, productManager);
                     break;
-                case 4:
+                case DISPLAYPRODUCT:
                     productManager.displayProducts();
                     break;
-                case 5:
+                case SORTPRODUCT:
                     ViewProduct.sortProduct(scanner, productManager);
                     break;
 
-                case 0:
+                case EXIT:
                     System.out.println("Goodbye!");
                     System.exit(0);
                 default:

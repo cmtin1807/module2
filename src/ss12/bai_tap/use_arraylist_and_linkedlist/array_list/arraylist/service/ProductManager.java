@@ -1,10 +1,11 @@
 package ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.service;
 
-import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.molde.Product;
+import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.model.Product;
 
 import java.util.*;
 
 public class ProductManager {
+
     List<Product> productList;
 
     public ProductManager() {

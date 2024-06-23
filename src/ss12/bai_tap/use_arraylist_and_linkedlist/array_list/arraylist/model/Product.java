@@ -1,4 +1,4 @@
-package ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.molde;
+package ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.model;
 
 public class Product implements Comparable<Product> {
     private int id;

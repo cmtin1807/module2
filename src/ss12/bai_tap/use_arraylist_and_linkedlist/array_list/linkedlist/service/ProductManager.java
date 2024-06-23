@@ -5,96 +5,158 @@ import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.linkedlist.molde.Pro
 import java.util.*;
 
 public class ProductManager {
-    List<Product> productList;
+    LinkedList<Product> productList;
+    private Node head;
+    private int numberNodes;
 
     public ProductManager() {
-        productList = new LinkedList<Product>();
+        head = new Node(new Product());
+        numberNodes = 1;
     }
 
-    public void addProduct(Product product) {
-        productList.add(product);
+    private class Node {
+        Product product;
+        Node next;
+
+        public Node(Product product) {
+            this.product = product;
+        }
+
+        Product getProduct() {
+            return this.product;
+        }
     }
 
-    public void removeProduct(int id) {
-        if (!productList.isEmpty()) {
-            for (int i = 0; i < productList.size(); i++) {
-                if (productList.get(i).getId() == id) {
-                    productList.remove(productList.get(i));
-                    System.out.println("Removed product: " + productList.get(i));
-                }
+    public void add(int index, Product product) {
+        Node newNode = new Node(product);
+        if (index < 0 || index > numberNodes) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node current = head;
+        for (int i = 0; i < index - 1 && current.next != null; i++) {
+            current = current.next;
+        }
+        Node holder = current.next;
+        current.next = newNode;
+        newNode.next = holder;
+        numberNodes++;
+    }
+
+    public void addFirst(Product product) {
+        Node newNode = new Node(product);
+        if (head == null) {
+            head = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+        numberNodes++;
+    }
+
+    public void addLast(Product product) {
+        Node newNode = new Node(product);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
             }
+            current.next = newNode;
+        }
+        numberNodes++;
+    }
+
+    public void remove(int index) {
+        if (index < 0 || index >= numberNodes) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (index == 0) {
+            head = head.next;
+        } else {
+            Node previous = head;
+            for (int i = 0; i < index - 1; i++) {
+                previous = previous.next;
+            }
+            Node current = previous.next;
+            previous.next = current.next;
+        }
+        numberNodes--;
+    }
+
+    public void remove(Product product) {
+        Node previous = head;
+        while (previous != null) {
+            if (previous.next != null && previous.next.product.equals(product)) {
+                previous.next = previous.next.next;
+                numberNodes--;
+                return;
+            }
+            previous = previous.next;
+        }
+    }
+
+    public Object get(int index) {
+        if (index < 0 || index >= numberNodes) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.product;
+    }
+
+    public int size() {
+        return numberNodes;
+    }
+
+    public void printList() {
+        Node current = head;
+        while (current != null) {
+            System.out.println(current.product + " ");
+            current = current.next;
         }
 
     }
-    public boolean checkId(int id) {
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getId() == id) {
+
+    public ProductManager clone() {
+        ProductManager newList = new ProductManager();
+        Node current = head.next;
+        Node newCurrent = newList.head;
+
+        while (current != null) {
+            Node newNode = new Node(current.product);
+            newCurrent.next = newNode;
+
+            newCurrent = newCurrent.next;
+            current = current.next;
+        }
+
+        newList.numberNodes = numberNodes;
+        return newList;
+    }
+
+    public boolean contains(Product product) {
+        Node current = head;
+        while (current != null) {
+            if (current.product.equals(product)) {
                 return true;
             }
+            current = current.next;
         }
         return false;
     }
 
-    public void updateProduct(int id, Product product) {
-        if (!productList.isEmpty()) {
-            for (int i = 0; i < productList.size(); i++) {
-                if (productList.get(i).getId() == id) {
-                    productList.set(i, product);
-                }
+    public int indexOf(Object o) {
+        Node current = head;
+        for (int i = 0; i < numberNodes; i++) {
+            if (current.product.equals(o)) {
+                return i;
             }
-
+            current = current.next;
         }
-    }
-
-    public Product getProduct(String name) {
-        for (Product product : productList) {
-            if (product.getProductName().equals(name)) {
-                return product;
-            }
-
-        }
-        return null;
-    }
-
-    public void sortProductsByName() {
-        Collections.sort(productList);
-    }
-
-    public void sortProductsByPriceAscending() {
-        Comparator comparator = new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                if (o1.getProductPrice() > o2.getProductPrice()) {
-                    return 1;
-                }
-                if (o1.getProductPrice() < o2.getProductPrice()) {
-                    return -1;
-                }
-                return 0;
-            }
-        };
-        Collections.sort(productList, comparator);
-    }
-
-    public void sortProductsByPriceDescending() {
-        Comparator comparator = new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                if (o1.getProductPrice() < o2.getProductPrice()) {
-                    return 1;
-                }
-                if (o1.getProductPrice() > o2.getProductPrice()) {
-                    return -1;
-                }
-                return 0;
-            }
-        };
-        Collections.sort(productList, comparator);
-    }
-
-    public void displayProducts() {
-        for (Product product : productList) {
-            System.out.println(product);
-        }
+        return -1;
     }
 }

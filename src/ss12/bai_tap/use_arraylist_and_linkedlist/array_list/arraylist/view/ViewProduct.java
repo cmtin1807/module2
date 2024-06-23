@@ -1,35 +1,38 @@
 package ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.view;
 
-import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.molde.Product;
+import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.model.Product;
 import ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.service.ProductManager;
 
 import java.util.Scanner;
 
+import static ss12.bai_tap.use_arraylist_and_linkedlist.array_list.arraylist.view.ToChoice.*;
+
 public class ViewProduct {
+
     public static void sortProduct(Scanner scanner, ProductManager productManager) {
         boolean isSort = true;
         while (isSort){
             System.out.println("1. Sort Product By Name: ");
             System.out.println("2. Sort Product By Price Descending: ");
             System.out.println("3. Sort Product By Price Ascending: ");
-            System.out.println("4. Exit: ");
+            System.out.println("0. Exit: ");
             System.out.println("Enter your choice: ");
             int choice2 = scanner.nextInt();
             scanner.nextLine();
             switch (choice2) {
-                case 1:
+                case SORTPRODUCTBYNAME:
                     productManager.sortProductsByName();
                     productManager.displayProducts();
                     break;
-                case 2:
+                case SORTPRODUCTBYPRICEDESCENDING:
                     productManager.sortProductsByPriceDescending();
                     productManager.displayProducts();
                     break;
-                case 3:
+                case SORTPRODUCTBYPRICEASCENDING:
                     productManager.sortProductsByPriceAscending();
                     productManager.displayProducts();
                     break;
-                case 4:
+                case EXIT:
                     isSort = false;
                     break;
 
@@ -53,6 +56,7 @@ public class ViewProduct {
         System.out.println("Enter product id: ");
         int id1 = scanner.nextInt();
         if (productManager.checkId(id1)) {
+            int id = id1;
             System.out.println("Enter product name: ");
             String name1 = scanner.next();
             scanner.nextLine();
@@ -60,7 +64,7 @@ public class ViewProduct {
             int price1 = scanner.nextInt();
             System.out.println("Enter product quantity: ");
             int quantity1 = scanner.nextInt();
-            productManager.updateProduct(id1, new Product(name1, price1, quantity1));
+            productManager.updateProduct(id, new Product(id,name1,price1,quantity1));
             isUpdate = false;
         }{
             System.out.println("id does not exist: ");
