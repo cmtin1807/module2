@@ -9,7 +9,7 @@ public class ProductManager {
     List<Product> productList;
 
     public ProductManager() {
-        productList = new ArrayList<Product>();
+        productList = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
