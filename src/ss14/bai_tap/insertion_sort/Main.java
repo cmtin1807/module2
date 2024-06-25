@@ -1,8 +1,8 @@
-package ss14.thuc_hanh.review_selection_sort;
+package ss14.bai_tap.insertion_sort;
 
 import java.util.Scanner;
 
-import static ss14.thuc_hanh.review_selection_sort.SelectionSort.selectionSort;
+import static ss14.bai_tap.insertion_sort.InsertionSort.insertionSort;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,15 +10,16 @@ public class Main {
         System.out.println("Enter the size of array: ");
         int size = sc.nextInt();
         int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            System.out.println("Enter the element: "+ i);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("Enter the element: " + i);
             arr[i] = sc.nextInt();
         }
-        System.out.printf("%-25s","The array is: ");
-        for (int i = 0; i < size; i++) {
+        System.out.printf("%-25s", "The array is: ");
+        for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + "\t");
         }
         System.out.println();
-        selectionSort(arr);
+        insertionSort(arr);
     }
 }
