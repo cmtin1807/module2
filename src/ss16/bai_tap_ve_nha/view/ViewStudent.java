@@ -5,6 +5,7 @@ import ss16.bai_tap_ve_nha.service.StudentManager;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ViewStudent {
@@ -24,6 +25,7 @@ public class ViewStudent {
         }
         bufferedReader.close();
     }
+
     public static void dislayMenu() {
         System.out.println("Menu Student Manager ");
         System.out.println("1. Add Student");
@@ -33,23 +35,32 @@ public class ViewStudent {
         System.out.println("0. Exit");
         System.out.println("Enter your choice");
     }
-    public static void addStudentInStudentManager(File file, StudentManager studentManager, Scanner scanner) throws IOException {
-        FileWriter fileWriter = new FileWriter(file, true);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        int id = studentManager.idLast()+1;
-        System.out.println("Enter First Name Student: ");
-        String firstName = scanner.next();
-        System.out.println("Enter Last Name Student: ");
-        String lastName = scanner.next();
-        System.out.println("Enter Age Student: ");
-        int age = scanner.nextInt();
-        scanner.nextLine();
-        String data = id + ", " + firstName + ", " + lastName + ", " + age;
-        bufferedWriter.write(data);
-        bufferedWriter.newLine();
-        bufferedWriter.close();
+
+    public static void addStudentInStudentManager(File file, StudentManager studentManager, Scanner scanner) {
+        try {
+            FileWriter fileWriter = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            System.out.println("Enter First Name Student: ");
+            String firstName = scanner.next();
+            System.out.println("Enter Last Name Student: ");
+            String lastName = scanner.next();
+            System.out.println("Enter Age Student: ");
+            int age = scanner.nextInt();
+            scanner.nextLine();
+            int id = studentManager.idLast() + 1;
+            String data = id + ", " + firstName + ", " + lastName + ", " + age;
+            bufferedWriter.write(data);
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (InputMismatchException e){
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
+
     public static void updateStudentInStudentManager(Scanner scanner, File file) throws IOException {
         System.out.println("Enter Id Update");
         int idUpdate = scanner.nextInt();
@@ -63,22 +74,22 @@ public class ViewStudent {
         ArrayList<Student> studentsUpdate = new ArrayList<>();
         BufferedReader readerUpdate = new BufferedReader(new FileReader(file));
         String lineUpdate = "";
-        while ((lineUpdate = readerUpdate.readLine())!=null){
+        while ((lineUpdate = readerUpdate.readLine()) != null) {
             String[] dataUpdate = lineUpdate.split(", ");
-            if (Integer.parseInt(dataUpdate[0])==idUpdate){
+            if (Integer.parseInt(dataUpdate[0]) == idUpdate) {
                 studentsUpdate.add(new Student(idUpdate, firstNameUpdate, lastNameUpdate, ageUpdate));
-            }
-            else {
+            } else {
                 studentsUpdate.add(new Student(Integer.parseInt(dataUpdate[0]), dataUpdate[1], dataUpdate[2], Integer.parseInt(dataUpdate[3])));
             }
         }
         readerUpdate.close();
         BufferedWriter writerUpdate = new BufferedWriter(new FileWriter(file));
         for (Student student : studentsUpdate) {
-            writerUpdate.write(student.getId()+", "+student.getFirstName()+", "+student.getLastName()+", "+student.getAge()+"\n");
+            writerUpdate.write(student.getId() + ", " + student.getFirstName() + ", " + student.getLastName() + ", " + student.getAge() + "\n");
         }
         writerUpdate.close();
     }
+
     public static void removeStudentInStudentManager(Scanner scanner, File file) throws IOException {
         System.out.println("Enter Id Remove");
         int idRemove = scanner.nextInt();
@@ -86,19 +97,21 @@ public class ViewStudent {
         ArrayList<Student> studentsRemove = new ArrayList<>();
         BufferedReader readerRemove = new BufferedReader(new FileReader(file));
         String lineRemove = "";
-        while ((lineRemove = readerRemove.readLine())!=null){
+        while ((lineRemove = readerRemove.readLine()) != null) {
             String[] dataRemove = lineRemove.split(", ");
-            if (Integer.parseInt(dataRemove[0])!=idRemove){
-                studentsRemove.add(new Student(Integer.parseInt(dataRemove[0]), dataRemove[1], dataRemove[2], Integer.parseInt(dataRemove[3])));;
+            if (Integer.parseInt(dataRemove[0]) != idRemove) {
+                studentsRemove.add(new Student(Integer.parseInt(dataRemove[0]), dataRemove[1], dataRemove[2], Integer.parseInt(dataRemove[3])));
+                ;
             }
         }
         readerRemove.close();
         BufferedWriter writerRemove = new BufferedWriter(new FileWriter(file));
         for (Student student : studentsRemove) {
-            writerRemove.write(student.getId()+", "+student.getFirstName()+", "+student.getLastName()+", "+student.getAge()+"\n");
+            writerRemove.write(student.getId() + ", " + student.getFirstName() + ", " + student.getLastName() + ", " + student.getAge() + "\n");
         }
         writerRemove.close();
     }
+
     public static void diplayAllStudentInStudentManager(File file, StudentManager studentManager) throws IOException {
         FileReader fileReader1 = new FileReader(file);
         BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
