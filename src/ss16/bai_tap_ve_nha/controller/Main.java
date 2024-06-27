@@ -18,7 +18,7 @@ public class Main {
         ViewStudent.printAllStudentBegin(file, studentManager);
         while (true) {
             ViewStudent.dislayMenu();
-            int choice = scanner.nextInt();
+            int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case ADD_STUDENT:
                     ViewStudent.addStudentInStudentManager(file, studentManager, scanner);
