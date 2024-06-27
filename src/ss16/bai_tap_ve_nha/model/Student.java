@@ -1,13 +1,23 @@
-package ss16.thuc_hanh_test.test_file_class.Manager;
+package ss16.bai_tap_ve_nha.model;
 
 public class Student {
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
-    public Student(String firstName, String surname, int age) {
+    public Student(int id, String firstName, String lastName, int age) {
+        this.id = id;
         this.firstName = firstName;
-        this.lastName = surname;
+        this.lastName = lastName;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -37,7 +47,8 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
