@@ -9,11 +9,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ViewStudent {
-    public static void printAllStudentBegin(File file, StudentManager studentManager) throws IOException {
-        FileReader fileReader = new FileReader(file);
+    public static void printAllStudentBegin(File file, StudentManager studentManager){
+        FileReader fileReader = null;
+        try {
+        fileReader = new FileReader(file);}
+        catch (FileNotFoundException e){
+            System.out.println(e.getMessage());;
+        }
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line;
-        while ((line = bufferedReader.readLine()) != null) {
+        while (true) {
+            try {
+                if (!((line = bufferedReader.readLine()) != null)) break;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             String[] dataStudent = line.split(", ");
             int idStudent = Integer.parseInt(dataStudent[0]);
             String fName = dataStudent[1];
@@ -23,7 +33,11 @@ public class ViewStudent {
             studentManager.addStudent(student);
             System.out.println(student);
         }
-        bufferedReader.close();
+        try {
+            bufferedReader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void dislayMenu() {
@@ -32,6 +46,8 @@ public class ViewStudent {
         System.out.println("2. Update Student");
         System.out.println("3. Delete Student");
         System.out.println("4. Print All Students");
+        System.out.println("5. Import students from file: ");
+        System.out.println("6. Export students into file: ");
         System.out.println("0. Exit");
         System.out.println("Enter your choice");
     }
@@ -101,7 +117,7 @@ public class ViewStudent {
             String[] dataRemove = lineRemove.split(", ");
             if (Integer.parseInt(dataRemove[0]) != idRemove) {
                 studentsRemove.add(new Student(Integer.parseInt(dataRemove[0]), dataRemove[1], dataRemove[2], Integer.parseInt(dataRemove[3])));
-                ;
+
             }
         }
         readerRemove.close();
@@ -127,6 +143,30 @@ public class ViewStudent {
             System.out.println(student);
         }
         bufferedReader1.close();
+    }
+    public static void exportFile(Scanner scanner, File file) {
+        System.out.println("Enter Export students into file: ");
+        String fileExport = scanner.nextLine();
+        try{
+
+            File paste = new File(fileExport);
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            FileWriter fileWriter = new FileWriter(paste);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String line;
+            while ((line = bufferedReader.readLine())!=null){
+                bufferedWriter.write(line+"\n");
+
+            }
+            bufferedWriter.close();
+            bufferedReader.close();}
+        catch(FileNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }

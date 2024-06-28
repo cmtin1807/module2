@@ -14,33 +14,47 @@ public class Main {
     public static void main(String[] args) throws IOException {
         StudentManager studentManager = new StudentManager();
         Scanner scanner = new Scanner(System.in);
-        File file = new File("D:\\codegym\\module2\\src\\ss16\\bai_tap_ve_nha\\data\\data.txt");
-        ViewStudent.printAllStudentBegin(file, studentManager);
+        String path = "D:\\codegym\\module2\\src\\ss16\\bai_tap_ve_nha\\data\\data.txt";
         while (true) {
-            ViewStudent.dislayMenu();
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
-                case ADD_STUDENT:
-                    ViewStudent.addStudentInStudentManager(file, studentManager, scanner);
-                    break;
-                case UPDATE_STUDENT:
-                    ViewStudent.updateStudentInStudentManager(scanner, file);
-                    break;
-                case DELETE_STUDENT:
-                    ViewStudent.removeStudentInStudentManager(scanner, file);
-                    break;
-                case DISPLAY_STUDENT:
-                    ViewStudent.diplayAllStudentInStudentManager(file, studentManager);
-                    break;
-                case EXIT:
-                    scanner.close();
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice");
+            File file = new File(path);
+            ViewStudent.printAllStudentBegin(file, studentManager);
+            boolean menu = true;
+            while (menu) {
+                ViewStudent.dislayMenu();
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case ADD_STUDENT:
+                        ViewStudent.addStudentInStudentManager(file, studentManager, scanner);
+                        break;
+                    case UPDATE_STUDENT:
+                        ViewStudent.updateStudentInStudentManager(scanner, file);
+                        break;
+                    case DELETE_STUDENT:
+                        ViewStudent.removeStudentInStudentManager(scanner, file);
+                        break;
+                    case DISPLAY_STUDENT:
+                        ViewStudent.diplayAllStudentInStudentManager(file, studentManager);
+                        break;
+                    case IMPORT_FILE:
+                        menu = false;
+                        break;
+                    case EXPORT_FILE:
+                        ViewStudent.exportFile(scanner, file);
+                        break;
+
+                    case EXIT:
+                        scanner.close();
+                        System.exit(0);
+                    default:
+                        System.out.println("Invalid choice");
+                }
+            }
+            if (!menu){
+                System.out.println("Enter Import students from file: ");
+                path = scanner.nextLine();}
             }
         }
-    }
-
-
-
 }
+
+
+
