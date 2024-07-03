@@ -24,11 +24,11 @@ public class Truck extends Vehicle {
     @Override
     public String toString() {
         return "Truck{" +
-                "weight=" + weight +
-                ", licensePlates='" + licensePlates + '\'' +
+                "licensePlates='" + licensePlates + '\'' +
                 ", company='" + company + '\'' +
                 ", yearCreatOfVehicle=" + yearCreatOfVehicle +
                 ", owner='" + owner + '\'' +
+                ", weight=" + weight +
                 '}';
     }
 }

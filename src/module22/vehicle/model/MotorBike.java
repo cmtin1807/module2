@@ -21,15 +21,14 @@ public class MotorBike extends Vehicle {
     }
 
 
-
     @Override
     public String toString() {
         return "MotorBike{" +
-                "wattage=" + wattage +
-                ", licensePlates='" + licensePlates + '\'' +
+                "licensePlates='" + licensePlates + '\'' +
                 ", company='" + company + '\'' +
                 ", yearCreatOfVehicle=" + yearCreatOfVehicle +
                 ", owner='" + owner + '\'' +
+                ", wattage=" + wattage +
                 '}';
     }
 }

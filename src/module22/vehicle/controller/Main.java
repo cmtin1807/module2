@@ -10,11 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static module22.vehicle.service.CompanyManager.getCompany;
+import static module22.vehicle.service.ReadAndWrite.*;
+import static module22.vehicle.service.VehicleManager.*;
+
 
 public class Main {
-    public static String linkFileTruck = "src/molude2/vehicle/data/xeTai.csv";
-    public static String linkFileCar = "src/molude2/vehicle/data/oto.csv";
-    public static String linkFileMotorBike = "src/molude2/vehicle/data/xeMay.csv";
+    public static String linkFileTruck = "src/module22/vehicle/data/xeTai.csv";
+    public static String linkFileCar = "src/module22/vehicle/data/oto.csv";
+    public static String linkFileMotorBike = "src/module22/vehicle/data/xeMay.csv";
 
     public static void main(String[] args) throws IOException {
         List<Truck> truckManager = new ArrayList<>();
@@ -24,181 +28,75 @@ public class Main {
         File fileCar = new File(linkFileCar);
         File fileMotorBike = new File(linkFileMotorBike);
         Scanner scanner = new Scanner(System.in);
-        BufferedReader readerFileTruck = new BufferedReader(new FileReader(fileTruck));
-        String lineTruck;
-        while ((lineTruck = readerFileTruck.readLine()) != null) {
-            String[] dataTruck = lineTruck.split(",");
-            truckManager.add(new Truck(dataTruck[0], dataTruck[1], Integer.parseInt(dataTruck[2]), dataTruck[3], Integer.parseInt(dataTruck[4])));
-        }
-//        for (Truck truck : truckManager) {
-//            System.out.println(truck);
-//        }
-        BufferedReader readerFileCar = new BufferedReader(new FileReader(fileCar));
-        String lineCar;
-        while ((lineCar = readerFileCar.readLine()) != null) {
-            String[] dataCar = lineCar.split(",");
-            carManager.add(new Car(dataCar[0], dataCar[1], Integer.parseInt(dataCar[2]), dataCar[3], dataCar[4], Integer.parseInt(dataCar[5])));
-        }
-//        for (Car car : carManager) {
-//            System.out.println(car);
-//        }
-        BufferedReader readerFileMotorBike = new BufferedReader(new FileReader(fileMotorBike));
-        String lineMotorBike;
-        while ((lineMotorBike = readerFileMotorBike.readLine()) != null) {
-            String[] dataMotorBike = lineMotorBike.split(",");
-            motorBikeManager.add(new MotorBike(dataMotorBike[0], dataMotorBike[1], Integer.parseInt(dataMotorBike[2]), dataMotorBike[3], Integer.parseInt(dataMotorBike[4])));
-        }
-//        for (MotorBike motorBike : motorBikeManager) {
-//            System.out.println(motorBike);
-//        }
+        loadFileTruck(fileTruck, truckManager);
+        loadFileCar(fileCar, carManager);
+        loadFileMotorBike(fileMotorBike, motorBikeManager);
 
         while (true) {
-
-            System.out.println("Chọn Chức Năng:");
-            System.out.println("1. Thêm mới phương tiện");
-            System.out.println("2. Hiện thị phương tiện");
-            System.out.println("3. Xóa phương tiện");
-            System.out.println("4. Thoát");
-            System.out.println("Enter chức năng lựa chọn của bạn");
+            displayMenu();
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    boolean them = true;
-                    while (them) {
-                        System.out.println("1. Thêm xe tải");
-                        System.out.println("2. Thêm ôtô");
-                        System.out.println("3. Thêm  xe máy");
-                        System.out.println("4. Thoát");
-                        System.out.println("Enter chức năng lựa chọn của bạn");
+                    boolean addVehicle = true;
+                    while (addVehicle) {
+                        menuAddVehicle();
                         int choiceThem = scanner.nextInt();
                         scanner.nextLine();
                         switch (choiceThem) {
                             case 1:
-                                List<Vehicle> truckList = new ArrayList<>();
-                                FileWriter writerTruck = new FileWriter(fileTruck, true);
-                                BufferedWriter bufferedWriterTruck = new BufferedWriter(writerTruck);
-                                System.out.println("Biển kiểm soát: ");
-                                String bienKiemSoat = scanner.nextLine();
-                                System.out.println("Tên hãng sản xuất ");
-                                String hangSanXuat = scanner.nextLine();
-                                System.out.println("Năm sản xuất");
-                                int namSanXuat = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Chủ sở hữu");
-                                String chuSoHuu = scanner.nextLine();
-                                System.out.println("Tải trọng ");
-                                int taiTrong = scanner.nextInt();
-                                scanner.nextLine();
-
-                                truckManager.add(new Truck(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu, taiTrong));
-                                String write = bienKiemSoat + "," + hangSanXuat + "," + namSanXuat + "," + chuSoHuu + "," + taiTrong;
-                                bufferedWriterTruck.write(write);
-                                bufferedWriterTruck.newLine();
-                                bufferedWriterTruck.close();
+                                addVehicleTruck(scanner, truckManager, fileTruck);
                                 break;
                             case 2:
-                                FileWriter writerOto = new FileWriter(fileCar, true);
-                                BufferedWriter bufferedWriterOto = new BufferedWriter(writerOto);
-                                System.out.println("Biển kiểm soát: ");
-                                String bienKiemSoat1 = scanner.nextLine();
-                                System.out.println("Tên hãng sản xuất ");
-                                String hangSanXuat1 = scanner.nextLine();
-                                System.out.println("Năm sản xuất");
-                                int namSanXuat1 = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Chủ sở hữu");
-                                String chuSoHuu1 = scanner.nextLine();
-                                System.out.println("Loại xe");
-                                String loaiXe = scanner.nextLine();
-                                System.out.println("Số ghế ngồi");
-                                int soGheNgoi = scanner.nextInt();
-                                carManager.add(new Car(bienKiemSoat1, hangSanXuat1, namSanXuat1, chuSoHuu1, loaiXe, soGheNgoi));
-                                String writeDataOto = bienKiemSoat1 + "," + hangSanXuat1 + "," + namSanXuat1 + "," + chuSoHuu1 + "," + loaiXe + "," + soGheNgoi;
-                                bufferedWriterOto.write(writeDataOto);
-                                bufferedWriterOto.newLine();
-                                bufferedWriterOto.close();
+                                addVehicleCar(scanner, carManager, fileCar);
                                 break;
                             case 3:
-                                FileWriter writerMotorBike = new FileWriter(fileMotorBike, true);
-                                BufferedWriter bufferedWriterMotorBike = new BufferedWriter(writerMotorBike);
-                                System.out.println("Biển kiểm soát: ");
-                                String bienKiemSoat2 = scanner.nextLine();
-                                System.out.println("Tên hãng sản xuất ");
-                                String hangSanXuat2 = scanner.nextLine();
-                                System.out.println("Năm sản xuất");
-                                int namSanXuat2 = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Chủ sở hữu");
-                                String chuSoHuu2 = scanner.nextLine();
-                                System.out.println("Tải trọng ");
-                                int congSuat = scanner.nextInt();
-                                scanner.nextLine();
-                                motorBikeManager.add(new MotorBike(bienKiemSoat2, hangSanXuat2, namSanXuat2, chuSoHuu2, congSuat));
-                                String write2 = bienKiemSoat2 + "," + hangSanXuat2 + "," + namSanXuat2 + "," + chuSoHuu2 + "," + congSuat;
-                                bufferedWriterMotorBike.write(write2);
-                                bufferedWriterMotorBike.newLine();
-                                bufferedWriterMotorBike.close();
+                                addVehicleMotorBike(scanner, motorBikeManager, fileMotorBike);
                                 break;
                             case 4:
-                                them = false;
+                                addVehicle = false;
                                 break;
                             default:
                                 System.out.println("Chức năng chọn không hợp lệ");
                         }
-
                     }
                     break;
                 case 2:
-                    boolean hienThi = true;
-                    while (hienThi) {
-                        System.out.println("1. Hiện thị xe tải");
-                        System.out.println("2. Hiện thị ôtô");
-                        System.out.println("3. Hiện thị xe máy");
-                        System.out.println("4. Thoát");
-                        System.out.println("Enter chức năng lựa chọn của bạn");
-                        int choiceHienThi = scanner.nextInt();
-                        scanner.nextLine();
-                        switch (choiceHienThi) {
+                    boolean displayVehicle = true;
+                    while (displayVehicle) {
+                        int choiceDisplay = getChoiceDisplayVehicle(scanner);
+                        switch (choiceDisplay) {
                             case 1:
-                                for (Vehicle truck : truckManager) {
-                                    System.out.println(truck);
-                                }
+                                displayTruck(fileTruck, truckManager);
 
                                 break;
                             case 2:
-                                for (Vehicle car : carManager) {
-                                    System.out.println(car);
-                                }
+                                displayCar(fileCar, carManager);
                                 break;
                             case 3:
-                                for (Vehicle motorBike : motorBikeManager) {
-                                    System.out.println(motorBike);
-                                }
+                                displayMotorBike(fileMotorBike, motorBikeManager);
                                 break;
                             case 4:
-                                hienThi = false;
+                                displayVehicle = false;
                                 break;
                             default:
                                 System.out.println("Vui long nhap lai");
 
-
                         }
-
                     }
                     break;
                 case 3:
                     System.out.println("Enter chọn biển số xóa");
                     String licensePlatesRemove = scanner.nextLine();
-                    int dem = 0;
-
+                    boolean isLicensePlatesRemove = false;
+                    loadFileTruck(fileTruck, truckManager);
                     List<Truck> trucksToKeep = new ArrayList<>();
                     for (Truck truck : truckManager) {
                         if (!truck.getLicensePlates().equals(licensePlatesRemove)) {
-                            trucksToKeep.add(truck); // Thêm vào danh sách tạm thời nếu không phải phần tử cần xóa
+                            trucksToKeep.add(truck);
                         } else {
                             System.out.println("Xoa thanh cong " + truck);
-                            dem++;
+                            isLicensePlatesRemove = true;
                         }
                     }
                     truckManager = trucksToKeep;
@@ -215,10 +113,10 @@ public class Main {
                     List<Car> carToKeep = new ArrayList<>();
                     for (Car car : carManager) {
                         if (!car.getLicensePlates().equals(licensePlatesRemove)) {
-                            carToKeep.add(car); // Thêm vào danh sách tạm thời nếu không phải phần tử cần xóa
+                            carToKeep.add(car);
                         } else {
                             System.out.println("Xoa thanh cong " + car);
-                            dem++;
+                            isLicensePlatesRemove = true;
                         }
                     }
                     carManager = carToKeep;
@@ -233,10 +131,10 @@ public class Main {
                     List<MotorBike> motorBikeToKeep = new ArrayList<>();
                     for (MotorBike motorBike : motorBikeManager) {
                         if (!motorBike.getLicensePlates().equals(licensePlatesRemove)) {
-                            motorBikeToKeep.add(motorBike); // Thêm vào danh sách tạm thời nếu không phải phần tử cần xóa
+                            motorBikeToKeep.add(motorBike);
                         } else {
                             System.out.println("Xoa thanh cong " + motorBike);
-                            dem++;
+                            isLicensePlatesRemove = true;
                         }
                     }
                     motorBikeManager = motorBikeToKeep;
@@ -248,7 +146,7 @@ public class Main {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    if (dem==0){
+                    if (!isLicensePlatesRemove){
                         System.out.println("Biển số xe bạn nhập không hợp lệ");
                     }
 
@@ -262,5 +160,19 @@ public class Main {
 
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
