@@ -28,7 +28,7 @@ public class Main {
         boolean isMatch2 = matcher2.matches();
         System.out.println(isMatch2);
 
-//        2. Kiểm tra số thẻ tín dụng: Một số thẻ tín dụng thường có 16 chữ số.
+//        3. Kiểm tra số thẻ tín dụng: Một số thẻ tín dụng thường có 16 chữ số.
 //        có thể được nhóm thành 4 nhóm cách nhau bởi dấu gạch ngang (-) hoặc khoảng trắng.
 
 
