@@ -34,7 +34,7 @@ public class Main {
 
 
         Pattern pattern3 = Pattern.compile("^([0-9]{4}[- ]){3}[0-9]{4}$");
-        Matcher matcher3 = pattern3.matcher("1231-5678-9012-3456");
+        Matcher matcher3 = pattern3.matcher("1241-5658-9212-35546");
         boolean isMatch3 = matcher3.matches();
         System.out.println(isMatch3);
     }
