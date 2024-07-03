@@ -1,4 +1,4 @@
-package module2.vehicle.view;
+package module22.vehicle.view;
 
 import java.io.BufferedReader;
 import java.io.File;

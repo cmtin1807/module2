@@ -1,9 +1,9 @@
-package module2.vehicle.controller;
+package module22.vehicle.controller;
 
-import module2.vehicle.model.Car;
-import module2.vehicle.model.MotorBike;
-import module2.vehicle.model.Truck;
-import module2.vehicle.model.Vehicle;
+import module22.vehicle.model.Car;
+import module22.vehicle.model.MotorBike;
+import module22.vehicle.model.Truck;
+import module22.vehicle.model.Vehicle;
 
 import java.io.*;
 import java.util.ArrayList;

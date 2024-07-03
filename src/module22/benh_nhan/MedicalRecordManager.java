@@ -1,4 +1,4 @@
-package module2.benh_nhan;
+package module22.benh_nhan;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

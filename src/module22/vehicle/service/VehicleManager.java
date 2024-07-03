@@ -1,4 +1,4 @@
-package module2.vehicle.service;
+package module22.vehicle.service;
 
 public class VehicleManager {
 

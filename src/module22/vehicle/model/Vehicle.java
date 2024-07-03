@@ -1,4 +1,4 @@
-package module2.vehicle.model;
+package module22.vehicle.model;
 
 public abstract class Vehicle {
     protected String licensePlates;

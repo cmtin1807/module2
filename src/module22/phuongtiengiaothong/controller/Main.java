@@ -1,6 +1,6 @@
-package module2.phuongtiengiaothong.controller;
+package module22.phuongtiengiaothong.controller;
 
-import module2.phuongtiengiaothong.service.QuanLyPhuongTien;
+import module22.phuongtiengiaothong.service.QuanLyPhuongTien;
 
 import java.util.Scanner;
 

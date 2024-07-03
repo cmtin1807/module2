@@ -1,9 +1,9 @@
-package module2.phuongtiengiaothong.service;
+package module22.phuongtiengiaothong.service;
 
-import module2.phuongtiengiaothong.molde.Oto;
-import module2.phuongtiengiaothong.molde.PhuongTienGiaoThong;
-import module2.phuongtiengiaothong.molde.XeMay;
-import module2.phuongtiengiaothong.molde.XeTai;
+import module22.phuongtiengiaothong.molde.Oto;
+import module22.phuongtiengiaothong.molde.PhuongTienGiaoThong;
+import module22.phuongtiengiaothong.molde.XeMay;
+import module22.phuongtiengiaothong.molde.XeTai;
 
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package module2.phuongtiengiaothong.molde;
+package module22.phuongtiengiaothong.molde;
 
 public class XeTai extends PhuongTienGiaoThong {
     private int trongTai;

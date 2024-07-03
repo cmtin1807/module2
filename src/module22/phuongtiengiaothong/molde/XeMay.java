@@ -1,4 +1,4 @@
-package module2.phuongtiengiaothong.molde;
+package module22.phuongtiengiaothong.molde;
 
 public class XeMay extends PhuongTienGiaoThong {
     private int congSuat;
