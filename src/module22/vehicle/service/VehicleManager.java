@@ -8,6 +8,7 @@ import module22.vehicle.model.Vehicle;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,7 +49,7 @@ public class VehicleManager {
         Truck truck = new Truck(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu, taiTrong);
         truckManager.add(truck);
         System.out.println("Đã thêm thành công \n" + truck);
-        writeFileTruck(fileTruck, truck);
+        writeFileTruckAddTruck(fileTruck, truck);
         loadFileTruck(fileTruck, truckManager);
     }
 
@@ -69,7 +70,7 @@ public class VehicleManager {
         Car car = new Car(bienKiemSoat1, hangSanXuat1, namSanXuat1, chuSoHuu1, loaiXe, soGheNgoi);
         carManager.add(car);
         System.out.println("Đã thêm thành công \n" + car);
-        writeFileCar(fileCar, car);
+        writeFileCarAddCar(fileCar, car);
         loadFileCar(fileCar, carManager);
     }
     public static void addVehicleMotorBike(Scanner scanner, List<MotorBike> motorBikeManager, File fileMotorBike) throws IOException {
@@ -88,7 +89,7 @@ public class VehicleManager {
         MotorBike motorBike = new MotorBike(bienKiemSoat2, hangSanXuat2, namSanXuat2, chuSoHuu2, congSuat);
         motorBikeManager.add(motorBike);
         System.out.println("Đã thêm thành công \n" + motorBike);
-        writeFileMotorBike(fileMotorBike, motorBike);
+        writeFileMotorBikeAddMotorBike(fileMotorBike, motorBike);
         loadFileMotorBike(fileMotorBike, motorBikeManager);
     }
     public static int getChoiceDisplayVehicle(Scanner scanner) {
@@ -119,5 +120,7 @@ public class VehicleManager {
         }
     }
 
-
 }
+
+
+

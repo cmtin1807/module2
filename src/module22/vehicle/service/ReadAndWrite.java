@@ -37,7 +37,7 @@ public class ReadAndWrite {
             motorBikeManager.add(new MotorBike(dataMotorBike[0], dataMotorBike[1], Integer.parseInt(dataMotorBike[2]), dataMotorBike[3], Integer.parseInt(dataMotorBike[4])));
         }
     }
-    public static void writeFileTruck(File fileTruck, Truck truck) throws IOException {
+    public static void writeFileTruckAddTruck(File fileTruck, Truck truck) throws IOException {
         FileWriter writerTruck = new FileWriter(fileTruck, true);
         BufferedWriter bufferedWriterTruck = new BufferedWriter(writerTruck);
         String write = truck.getInforToFile();
@@ -45,7 +45,7 @@ public class ReadAndWrite {
         bufferedWriterTruck.newLine();
         bufferedWriterTruck.close();
     }
-    public static void writeFileCar(File fileCar, Car car) throws IOException {
+    public static void writeFileCarAddCar(File fileCar, Car car) throws IOException {
         FileWriter writerCar = new FileWriter(fileCar, true);
         BufferedWriter bufferedWriterCar = new BufferedWriter(writerCar);
         String write = car.getInforToFile();
@@ -53,13 +53,43 @@ public class ReadAndWrite {
         bufferedWriterCar.newLine();
         bufferedWriterCar.close();
     }
-    public static void writeFileMotorBike(File fileMotorBike, MotorBike motorBike) throws IOException {
+    public static void writeFileMotorBikeAddMotorBike(File fileMotorBike, MotorBike motorBike) throws IOException {
         FileWriter writerMotorBike = new FileWriter(fileMotorBike, true);
         BufferedWriter bufferedWriterMotorBike = new BufferedWriter(writerMotorBike);
         String write = motorBike.getInforToFile();
         bufferedWriterMotorBike.write(write);
         bufferedWriterMotorBike.newLine();
         bufferedWriterMotorBike.close();
+    }
+    public static void writeFileTruck(File fileTruck, List<Truck> truckManager) {
+        try (BufferedWriter bufferedWriterTruck = new BufferedWriter(new FileWriter(fileTruck))) {
+            for (Truck truck : truckManager) {
+                bufferedWriterTruck.write(truck.getInforToFile());
+                bufferedWriterTruck.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeFileCar(File fileCar, List<Car> carManager) {
+        try (BufferedWriter bufferedWriterCar = new BufferedWriter(new FileWriter(fileCar))) {
+            for (Car car : carManager) {
+                bufferedWriterCar.write(car.getInforToFile());
+                bufferedWriterCar.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeFileMotorBike(File fileTruck, List<MotorBike> motorBikeManager) {
+        try (BufferedWriter bufferedWriterMotorBike = new BufferedWriter(new FileWriter(fileTruck))) {
+            for (MotorBike motorBike : motorBikeManager) {
+                bufferedWriterMotorBike.write(motorBike.getInforToFile());
+                bufferedWriterMotorBike.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
