@@ -42,10 +42,11 @@ public class FactoryVehicle {
                     addVehicleMotorBike(scanner, motorBikeManager, fileMotorBike);
                     break;
                 case 4:
+                    System.out.println("Đã thoát ra khỏi chương trình thêm phương tiện");
                     addVehicle = false;
                     break;
                 default:
-                    System.out.println("Chức năng chọn không hợp lệ");
+                    System.out.println("Chức năng bạn chọn không phù hợp. Vui lòng chọn lại");
             }
         }
 
@@ -67,10 +68,11 @@ public class FactoryVehicle {
                     displayMotorBike(fileMotorBike, motorBikeManager);
                     break;
                 case 4:
+                    System.out.println("Đã thoát ra khỏi chương trình hiển thị phương tiện");
                     displayVehicle = false;
                     break;
                 default:
-                    System.out.println("Vui long nhap lai");
+                    System.out.println("Chức năng bạn chọn không phù hợp. Vui lòng chọn lại");
 
             }
         }
@@ -91,7 +93,7 @@ public class FactoryVehicle {
                     removeVehicleMotorBike(scanner, fileMotorBike, motorBikeManager);
                     break;
                 case 4:
-                    System.out.println("Đã Thoát Ra Khỏi Chương Trình Xóa Phương Tiện");
+                    System.out.println("Đã thoát ra khỏi chương trình xóa phương tiện");
                     removeVehicle = false;
                     break;
                 default:

@@ -24,9 +24,9 @@ public class DisplayProgram {
         return choiceAdd;
     }
     public static int getChoiceDisplayVehicle(Scanner scanner) {
-        System.out.println("1. Hiện thị xe tải");
-        System.out.println("2. Hiện thị ôtô");
-        System.out.println("3. Hiện thị xe máy");
+        System.out.println("1. Hiển thị xe tải");
+        System.out.println("2. Hiển thị ôtô");
+        System.out.println("3. Hiển thị xe máy");
         System.out.println("4. Thoát");
         System.out.println("Enter chức năng lựa chọn của bạn");
         int choiceDisplay = Integer.parseInt(scanner.nextLine());
