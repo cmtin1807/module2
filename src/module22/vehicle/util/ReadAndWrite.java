@@ -1,4 +1,4 @@
-package module22.vehicle.service;
+package module22.vehicle.util;
 
 import module22.vehicle.model.Car;
 import module22.vehicle.model.MotorBike;

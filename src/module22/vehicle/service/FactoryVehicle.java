@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static module22.vehicle.service.ReadAndWrite.*;
-import static module22.vehicle.service.ReadAndWrite.writeFileMotorBike;
-import static module22.vehicle.service.VehicleManager.*;
-import static module22.vehicle.service.VehicleManager.addVehicleMotorBike;
+import static module22.vehicle.service.CarManager.*;
+import static module22.vehicle.service.MotorBikeManager.*;
+import static module22.vehicle.service.TruckManager.*;
+import static module22.vehicle.template.DisplayProgram.*;
+
 
 public class FactoryVehicle {
     public static String linkFileTruck = "src/module22/vehicle/data/xeTai.csv";
@@ -22,15 +23,14 @@ public class FactoryVehicle {
     public static List<Truck> truckManager = new ArrayList<>();
     public static List<Car> carManager = new ArrayList<>();
     public static List<MotorBike> motorBikeManager = new ArrayList<>();
-    public static  File fileTruck = new File(linkFileTruck);
+    public static File fileTruck = new File(linkFileTruck);
     public static File fileCar = new File(linkFileCar);
-    public static  File fileMotorBike = new File(linkFileMotorBike);
+    public static File fileMotorBike = new File(linkFileMotorBike);
+
     public static void functionAddVehicle(Scanner scanner) throws IOException {
         boolean addVehicle = true;
         while (addVehicle) {
-            menuAddVehicle();
-            int choiceThem = scanner.nextInt();
-            scanner.nextLine();
+            int choiceThem = getChoiceAddVehicle(scanner);
             switch (choiceThem) {
                 case 1:
                     addVehicleTruck(scanner, truckManager, fileTruck);
@@ -50,6 +50,8 @@ public class FactoryVehicle {
         }
 
     }
+
+
     public static void functionDisplayVehicle(Scanner scanner) throws IOException {
         boolean displayVehicle = true;
         while (displayVehicle) {
@@ -73,51 +75,33 @@ public class FactoryVehicle {
             }
         }
     }
+
     public static void functionRemoveVehicle(Scanner scanner, File fileTruck, List<Truck> truckManager, List<Car> carManager, File fileCar, List<MotorBike> motorBikeManager) throws IOException {
-        System.out.println("Enter chọn biển số xóa");
-        String licensePlatesRemove = scanner.nextLine();
-        boolean isLicensePlatesRemove = false;
-        loadFileTruck(fileTruck, truckManager);
-        List<Truck> trucksToKeep = new ArrayList<>();
-        for (Truck truck : truckManager) {
-            if (!truck.getLicensePlates().equals(licensePlatesRemove)) {
-                trucksToKeep.add(truck);
-            } else {
-                System.out.println("Xoa thanh cong " + truck);
-                isLicensePlatesRemove = true;
-            }
-        }
-        truckManager.clear();
-        truckManager.addAll(trucksToKeep);
-        writeFileTruck(fileTruck, truckManager);
+        boolean removeVehicle = true;
+        while (removeVehicle) {
+            int ChoiceRemove = getChoiceRemoveVehicle(scanner);
+            switch (ChoiceRemove) {
+                case 1:
+                    removeVehicleTruck(scanner, fileTruck, truckManager);
+                    break;
+                case 2:
+                    removeVehicleCar(scanner,  fileCar, carManager);
+                    break;
+                case 3:
+                    removeVehicleMotorBike(scanner, fileMotorBike, motorBikeManager);
+                    break;
+                case 4:
+                    System.out.println("Đã Thoát Ra Khỏi Chương Trình Xóa Phương Tiện");
+                    removeVehicle = false;
+                    break;
+                default:
+                    System.out.println("Chức năng bạn chọn không phù hợp. Vui lòng chọn lại");
 
-
-        List<Car> carToKeep = new ArrayList<>();
-        for (Car car : carManager) {
-            if (!car.getLicensePlates().equals(licensePlatesRemove)) {
-                carToKeep.add(car);
-            } else {
-                System.out.println("Xoa thanh cong " + car);
-                isLicensePlatesRemove = true;
             }
-        }
-        carManager.clear();
-        carManager.addAll(carToKeep);
-        writeFileCar(fileCar, carManager);
-        List<MotorBike> motorBikeToKeep = new ArrayList<>();
-        for (MotorBike motorBike : motorBikeManager) {
-            if (!motorBike.getLicensePlates().equals(licensePlatesRemove)) {
-                motorBikeToKeep.add(motorBike);
-            } else {
-                System.out.println("Xoa thanh cong " + motorBike);
-                isLicensePlatesRemove = true;
-            }
-        }
-        motorBikeManager.clear();
-        motorBikeManager.addAll(motorBikeToKeep);
-        writeFileMotorBike(fileTruck, motorBikeManager);
-        if (!isLicensePlatesRemove){
-            System.out.println("Biển số xe bạn nhập không hợp lệ");
         }
     }
+
+
+
+
 }

@@ -1,4 +1,4 @@
-package module22.vehicle.service;
+package module22.vehicle.util;
 
 public interface IView {
     int ADD_VEHICLE = 1;
