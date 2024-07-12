@@ -2,11 +2,13 @@ package thi_module2;
 
 import java.util.Scanner;
 
+import static thi_module2.IViewPhone.*;
+
 public class Main {
     public static void main(String[] args) {
         PhoneManager phoneManager = new PhoneManager();
         Scanner sc = new Scanner(System.in);
-        while (true){
+        while (true) {
             System.out.println("    -----CHƯƠNG TRÌNH QUẢN LÝ ĐIỆN THOẠI-----   ");
             System.out.println("Chọn chức năng theo số (để tiếp tục):");
             System.out.println("1. Thêm mới");
@@ -17,19 +19,19 @@ public class Main {
             System.out.println("Chọn chức năng:");
             int choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
-                case 1:
+                case ADD_PHONE:
                     phoneManager.addPhone();
                     break;
-                    case 2:
-                        phoneManager.deleteRecord();
-                        break;
-                        case 3:
-                            phoneManager.viewPhone();
-                            break;
-                case 4:
+                case REMOVE_PHONE:
+                    phoneManager.deleteRecord();
+                    break;
+                case VIEW_PHONE:
+                    phoneManager.viewPhone();
+                    break;
+                case SEARCH_PHONE:
                     phoneManager.searchPhone();
                     break;
-                case 5 :
+                case EXIT:
                     System.exit(0);
 
                 default:

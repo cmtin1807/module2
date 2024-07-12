@@ -135,22 +135,22 @@ public class PhoneManager {
             System.out.println(phone);
         }
     }
-    private void loadRecords() {
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                int id = Integer.parseInt(values[0]);
-                String phoneName = values[1];
-                double price = values[2];
-                int quantity = values[3];
-                String company = values[4];
+//    private void loadPhone() {
+//        try (BufferedReader br = Files.newBufferedReader(Paths.get(FILE_PATH))) {
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                String[] values = line.split(",");
+//                int ep =  (int)values[5]%1 == 0?;
+//
+//
+//                }
+//
+//
+//        } catch (Exception e) {
+//            System.out.println("Lỗi : " + e.getMessage());
+//        }
+//    }
 
-            }
-        } catch (Exception e) {
-            System.out.println("Lỗi : " + e.getMessage());
-        }
-    }
     public void searchPhone() {
         Scanner scanner = new Scanner(System.in);
         try {
