@@ -2,7 +2,7 @@ package ss18.bai_tap.parity;
 
 public class EvenThread extends Thread {
     @Override
-    public synchronized void run() {
+    public  void run() {
         for (int i = 0; i < 10; i++) {
             if (i % 2 == 0) {
                 System.out.println(Thread.currentThread().getName() + ":" + i);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVFileHandler {
-    private static final String FILE_PATH = "data/medical_records.csv";
+    private static final String FILE_PATH = "src/module22/benh_nhan/datafile.csv";
     private static final String CSV_SEPARATOR = ",";
 
     public static List<BenhAn> readMedicalRecords() {
